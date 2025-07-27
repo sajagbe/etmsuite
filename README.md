@@ -15,7 +15,7 @@ The ETM Suite is a complete workflow that generates electrostatic tuning maps by
 
 1. **Clone GitHub**
    ```bash
-      git clone https://github.com/sajagbe/etmsuite.git
+   git clone https://github.com/sajagbe/etmsuite.git
    ```
 
 2. **Create the Conda environment:**
