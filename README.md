@@ -1,6 +1,6 @@
 # ETM Suite (Electrostatic Tuning Map Suite)
 
-**A comprehensive quantum chemistry workflow for computing molecular properties and redox potentials on van der Waals surfaces**
+**A comprehensive quantum chemistry workflow for computing electrostatic effects on molecular properties.**
 
 ## 🎯 Overview
 
@@ -13,16 +13,6 @@ The ETM Suite is a complete workflow that generates electrostatic tuning maps by
 
 ## 🚀 Quick Start
 
-```bash
-# Compute all properties for water
-python main.py water.xyz -prop all
-
-# Compute specific properties with solvent
-python main.py benzene.xyz -prop homo lumo gap -sol Water
-
-# Compute redox and excited state properties (up to S2)
-python main.py molecule.xyz -prop redox exe osc -exs 2
-```
 ## 🛠️ Environment Setup
 
 1. **Create the Conda environment:**
@@ -40,11 +30,29 @@ python main.py molecule.xyz -prop redox exe osc -exs 2
 3. **Run the workflow using SLURM:**
 
    - Edit `etmsuite.sh` and replace `molecule.xyz` with your input file (e.g., `water.xyz`).
+   - Add calculation options as needed using descriptions below. 
    - Submit the job:
 
      ```bash
      sbatch etmsuite.sh
      ```
+   
+
+   OR:
+
+4. **Quick Run**
+```bash
+# Compute all properties for water
+python main.py water.xyz -prop all 
+
+# Compute specific properties with solvent
+python main.py benzene.xyz -prop homo lumo gap -det
+
+# Compute redox and excited state properties (up to S2)
+python main.py molecule.xyz -prop redox exe osc -exs 2
+```
+
+
 ## 📋 Molecular Properties Available
 
 ### Standard Electronic Properties (12)
