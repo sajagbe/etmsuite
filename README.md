@@ -15,19 +15,23 @@ The ETM Suite is a complete workflow that generates electrostatic tuning maps by
 
 ## 🛠️ Environment Setup
 
-1. **Create the Conda environment:**
+1. **Clone GitHub**
+   ```bash
+      git clone https://github.com/sajagbe/etmsuite.git
+   ```
+2. **Create the Conda environment:**
 
    ```bash
    conda env create -f etmsuite.yml
    ```
 
-2. **Activate the environment:**
+3. **Activate the environment:**
 
    ```bash
    conda activate etmsuite
    ```
 
-3. **Run the workflow using SLURM:**
+4. **Run the workflow using SLURM:**
 
    - Edit `etmsuite.sh` and replace `molecule.xyz` with your input file (e.g., `water.xyz`).
    - Add calculation options as needed using descriptions below. 
