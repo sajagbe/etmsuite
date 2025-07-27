@@ -39,11 +39,11 @@ python main.py molecule.xyz -prop redox exe osc -exs 2
 
 3. **Run the workflow using SLURM:**
 
-   - Edit `psi4.sh` and replace `molecule.xyz` with your input file (e.g., `water.xyz`).
+   - Edit `etmsuite.sh` and replace `molecule.xyz` with your input file (e.g., `water.xyz`).
    - Submit the job:
 
      ```bash
-     sbatch psi4.sh
+     sbatch etmsuite.sh
      ```
 ## 📋 Molecular Properties Available
 
