@@ -106,8 +106,11 @@ python main.py molecule.xyz -prop homo -sol DMSO
 # Default: Acetonitrile for solvated steps, gas phase for thermal corrections
 python main.py molecule.xyz -prop redox
 
-# Custom redox solvent (Note: redox solvent options not implemented in main.py)
-# Use JSON config file to specify redox solvent settings
+# Custom redox solvent
+python main.py molecule.xyz -prop redox -rsol DMSO -rsolt IEFPCM -rsolr BONDI
+
+# Or configure via JSON file
+# "redox_solvent": {"name": "DMSO", "solver_type": "IEFPCM", "radii_set": "BONDI"}
 ```
 
 ### Solvent Options
@@ -350,6 +353,11 @@ Below is a complete list of all flags, options, and job types for the ETM Suite 
 
 ### Solvent
 * `-sol` : solvent name (e.g., Water, Acetonitrile, DMSO)
+
+### Redox Solvent
+* `-rsol` : redox solvent name (e.g., Acetonitrile, DMSO, Water)
+* `-rsolt` : redox solvent type (CPCM, IEFPCM)
+* `-rsolr` : redox solvent radii set (UFF, BONDI)
 
 ### Excited States
 * `-exs` : number of excited states
