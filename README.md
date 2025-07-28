@@ -109,8 +109,6 @@ python main.py molecule.xyz -prop redox
 # Custom redox solvent
 python main.py molecule.xyz -prop redox -rsol DMSO -rsolt IEFPCM -rsolr BONDI
 
-# Or configure via JSON file
-# "redox_solvent": {"name": "DMSO", "solver_type": "IEFPCM", "radii_set": "BONDI"}
 ```
 
 ### Solvent Options
