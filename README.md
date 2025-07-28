@@ -255,11 +255,11 @@ Redox calculations use a sophisticated 4-step thermodynamic cycle:
 
 1. **Directory Structure**:
    ```
-molecule_redox_inputs/
-   ├── neutral_gfec/    # Neutral Gibbs free energy correction calculations
-   ├── neutral_sscf/    # Neutral solvated SCF calculations
-   ├── anion_gfec/      # Anion Gibbs free energy correction calculations
-   └── anion_sscf/      # Anion solvated SCF calculations
+   molecule_redox_inputs/
+     ├── neutral_gfec/    # Neutral Gibbs free energy correction calculations
+     ├── neutral_sscf/    # Neutral solvated SCF calculations
+     ├── anion_gfec/      # Anion Gibbs free energy correction calculations
+     └── anion_sscf/      # Anion solvated SCF calculations
    ```
 
 2. **Calculation Types**:
