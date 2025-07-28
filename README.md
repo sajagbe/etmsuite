@@ -270,6 +270,65 @@ Redox calculations use a sophisticated 4-step thermodynamic cycle:
    - `reduction_gfe = (E_anion_sscf + G_anion_gfec) - (E_neutral_sscf + G_neutral_gfec)`
    - `redox_potential = -reduction_gfe / F - 4.43` (vs NHE in Volts)
 
+## 🧮 Property Calculation Formulas
+
+The ETM Suite extracts molecular properties using quantum chemistry calculations and applies standard formulas from computational chemistry literature:
+
+### Direct Extracted Properties
+| Property | Formula | Units | Description |
+|----------|---------|-------|-------------|
+| `ground_state_energy` | Direct SCF energy | eV | Electronic ground state energy |
+| `homo` | Highest occupied orbital energy | eV | Energy of highest occupied molecular orbital |
+| `lumo` | Lowest unoccupied orbital energy | eV | Energy of lowest unoccupied molecular orbital |
+| `dipole_moment` | √(μₓ² + μᵧ² + μᵤ²) | Debye | Electric dipole moment magnitude |
+| `excitation_energy` | E(Sₙ) - E(S₀) | eV | Electronic excitation energy (TDDFT) |
+| `oscillator_strength` | f | dimensionless | Transition probability (TDDFT) |
+
+### Calculated from Ion States
+| Property | Formula | Units | Description |
+|----------|---------|-------|-------------|
+| `gap` | E(LUMO) - E(HOMO) | eV | HOMO-LUMO energy gap |
+| `electron_affinity` | E(neutral) - E(anion) | eV | Energy released upon electron addition |
+| `ionization_energy` | E(cation) - E(neutral) | eV | Energy required for electron removal |
+
+### Conceptual DFT Properties
+Based on Density Functional Theory conceptual framework (Parr, Yang, et al.):
+
+| Property | Formula | Units | Description |
+|----------|---------|-------|-------------|
+| `electronegativity` | χ = 0.5 × (I + A) | eV | Mulliken electronegativity |
+| `chemical_potential` | μ = -0.5 × (I + A) | eV | Electronic chemical potential |
+| `hardness` | η = 0.5 × (I - A) | eV | Chemical hardness (resistance to charge transfer) |
+| `electrophilicity` | ω = μ² / (2η) | eV | Electrophilic character |
+| `nucleophilicity` | ν = 2η / μ² | eV⁻¹ | Nucleophilic character |
+
+Where: I = ionization energy, A = electron affinity
+
+### Redox Properties
+Thermodynamic cycle using solvated energies and gas-phase corrections:
+
+| Property | Formula | Units | Description |
+|----------|---------|-------|-------------|
+| `reduction_gfe` | ΔG = (E_anion,solv + G_anion,gas) - (E_neutral,solv + G_neutral,gas) | au | Reduction free energy |
+| `redox_potential` | E° = -ΔG_eV - 4.43 | V vs NHE | Standard reduction potential |
+
+### Delta Properties
+All properties automatically get corresponding `delta_property` columns:
+- `delta_property = property_value - reference_value`
+- Reference calculation uses no external point charges
+- Shows how each surface point perturbs the molecular property
+
+### Calculation Dependencies
+```
+ground_state_energy → requires: neutral calculation
+homo, lumo, gap → requires: neutral calculation  
+electron_affinity → requires: neutral + anion calculations
+ionization_energy → requires: neutral + cation calculations
+electronegativity, hardness, etc. → requires: neutral + anion + cation calculations
+excitation_energy, oscillator_strength → requires: neutral TDDFT calculation
+redox_potential → requires: 4 calculations (neutral_sscf, neutral_gfec, anion_sscf, anion_gfec)
+```
+
 ### Failure Handling System
 
 #### Automatic Retry Mechanism
