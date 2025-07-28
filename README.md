@@ -18,7 +18,7 @@ The ETM Suite is a complete workflow that generates electrostatic tuning maps by
    git clone https://github.com/sajagbe/etmsuite.git
 
    cd etmsuite
-   
+
    ```
 
 2. **Create the Conda environment:**
@@ -246,7 +246,7 @@ The ETM Suite uses a JSON configuration file for default settings:
 
 #### Auto-Detection Features
 - **Directory Detection**: Auto-detects `molecule_psi4_inputs/` and `molecule_redox_inputs/` folders
-- **Config Creation**: Creates default `psi4_params.json` if none exists (prefers `LF.xyz` if available)
+- **Config Creation**: Creates default `psi4_params.json` if none exists.
 - **Surface File Detection**: Finds `molecule_vdw_surface.txt` automatically
 - **Individual Scripts**: `etm-inputs.py` and `etm-extract.py` can auto-detect molecule from XYZ files when run directly
 
