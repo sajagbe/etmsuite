@@ -1,6 +1,6 @@
 # ETM Suite (Electrostatic Tuning Map Suite)
 
-**A comprehensive quantum chemistry workflow for computing electrostatic effects on molecular properties.**
+**A comprehensive quantum chemistry workflow for computing positional electrostatic effects on molecular properties.**
 
 ## 🎯 Overview
 
